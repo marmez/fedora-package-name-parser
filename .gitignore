@@ -1,2 +1,3 @@
-.*.swp # Vim swap temporary files
+# Ignore Vim swap temporary files
+.*.swp
 
