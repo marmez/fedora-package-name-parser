@@ -2,28 +2,15 @@
 use strict;
 use warnings;
 use diagnostics;
-use feature 'state';
 use Test::More;
 
+use lib 'lib';
+
 BEGIN {
-  use lib 'lib';
-
-  my $module = get_module_name();
-
-  # Compilation test
-  require_ok($module)
-      or BAIL_OUT("Can't load module '$module'!");
-
-  use_ok($module);
-
-  sub get_module_name {
-      return 'FedoraPackage::NameParser';
-  }
+  use_ok('FedoraPackage::NameParser');
 }
 
-my $module = get_module_name();
-
-can_ok($module, qw(
+can_ok('FedoraPackage::NameParser', qw(
   new
   parse
   get_name
@@ -37,7 +24,7 @@ can_ok($module, qw(
   get_restofstr
 ));
 
-my $fpnp = new_ok($module);
+my $fpnp = new_ok('FedoraPackage::NameParser');
 
 my %package_names_strings = (
   # String containing package name:
