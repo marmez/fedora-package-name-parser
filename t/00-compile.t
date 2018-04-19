@@ -14,11 +14,10 @@ my @modules = (
 );
 
 foreach my $module (map {
-  my $m = $_;
-  $m =~ s|^lib/||;
-  $m =~ s|/|::|g;
-  $m =~ s|\.pm$||;
-  $m;
+  s|^lib/||;
+  s|/|::|g;
+  s|\.pm$||;
+  $_;
 } glob "@modules") {
   BAIL_OUT("Bail out! Can't load module: '$module' does not compile")
     unless require_ok($module);
