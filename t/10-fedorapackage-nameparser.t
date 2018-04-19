@@ -223,5 +223,5 @@ foreach my $package_name_string (sort keys %package_names_strings) {
   });
 }
 
-done_testing();
+done_testing;
 
