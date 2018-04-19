@@ -26,7 +26,7 @@ can_ok('FedoraPackage::NameParser', qw(
 
 my $fpnp = new_ok('FedoraPackage::NameParser');
 
-my %package_names_strings = (
+my %packages = (
   # String containing package name:
     # 0 - package name,
     # 1 - package architecture,
@@ -172,52 +172,52 @@ my %package_names_strings = (
   ],
 );
 
-foreach my $package_name_string (sort keys %package_names_strings) {
-  subtest("Parse '$package_name_string'" => sub {
-    cmp_ok($fpnp->parse($package_name_string), '==', 1, '->parse() ok');
+foreach my $package (sort keys %packages) {
+  subtest("Parse '$package'" => sub {
+    cmp_ok($fpnp->parse($package), '==', 1, '->parse() ok');
     is(
       $fpnp->get_name(),
-      $package_names_strings{$package_name_string}->[0],
+      $packages{$package}[0],
       'Package name'
     );
     is(
       $fpnp->get_arch(),
-      $package_names_strings{$package_name_string}->[1],
+      $packages{$package}[1],
       'Package architecture'
     );
     is(
       $fpnp->get_number(),
-      $package_names_strings{$package_name_string}->[2],
+      $packages{$package}[2],
       'Number'
     );
     is(
       $fpnp->get_version(),
-      $package_names_strings{$package_name_string}->[3],
+      $packages{$package}[3],
       'Package version'
     );
     is(
       $fpnp->get_milestone(),
-      $package_names_strings{$package_name_string}->[4],
+      $packages{$package}[4],
       'Package milestone'
     );
     is(
       $fpnp->get_distver(),
-      $package_names_strings{$package_name_string}->[5],
+      $packages{$package}[5],
       'Package distribution version'
     );
     is(
       $fpnp->get_repomark(),
-      $package_names_strings{$package_name_string}->[6],
+      $packages{$package}[6],
       'Additional repository mark'
     );
     is(
       $fpnp->get_fullpackname(),
-      $package_names_strings{$package_name_string}->[7],
+      $packages{$package}[7],
       'Package full name (composed)'
     );
     is(
       $fpnp->get_restofstr(),
-      $package_names_strings{$package_name_string}->[8],
+      $packages{$package}[8],
       'Rest of string (without first package name)'
     );
   });
