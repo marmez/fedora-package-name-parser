@@ -176,47 +176,47 @@ foreach my $package (sort keys %packages) {
   subtest("Parse '$package'" => sub {
     cmp_ok($fpnp->parse($package), '==', 1, '->parse() ok');
     is(
-      $fpnp->get_name(),
+      $fpnp->get_name,
       $packages{$package}[0],
       'Package name'
     );
     is(
-      $fpnp->get_arch(),
+      $fpnp->get_arch,
       $packages{$package}[1],
       'Package architecture'
     );
     is(
-      $fpnp->get_number(),
+      $fpnp->get_number,
       $packages{$package}[2],
       'Number'
     );
     is(
-      $fpnp->get_version(),
+      $fpnp->get_version,
       $packages{$package}[3],
       'Package version'
     );
     is(
-      $fpnp->get_milestone(),
+      $fpnp->get_milestone,
       $packages{$package}[4],
       'Package milestone'
     );
     is(
-      $fpnp->get_distver(),
+      $fpnp->get_distver,
       $packages{$package}[5],
       'Package distribution version'
     );
     is(
-      $fpnp->get_repomark(),
+      $fpnp->get_repomark,
       $packages{$package}[6],
       'Additional repository mark'
     );
     is(
-      $fpnp->get_fullpackname(),
+      $fpnp->get_fullpackname,
       $packages{$package}[7],
       'Package full name (composed)'
     );
     is(
-      $fpnp->get_restofstr(),
+      $fpnp->get_restofstr,
       $packages{$package}[8],
       'Rest of string (without first package name)'
     );
