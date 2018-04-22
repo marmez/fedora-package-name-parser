@@ -5,9 +5,8 @@ use warnings;
 use diagnostics;
 
 sub new {
-  my $class_name = shift;
-  my $object = {};
-  return bless $object, $class_name;
+  my ($class, $object) = (shift, {});
+  return bless $object, $class;
 }
 
 sub parse {
@@ -82,38 +81,31 @@ sub parse {
 }
 
 sub get_name {
-  my $self = shift;
-  return $self->{name};
+  return shift->{name};
 }
 
 sub get_arch {
-  my $self = shift;
-  return $self->{arch};
+  return shift->{arch};
 }
 
 sub get_number {
-  my $self = shift;
-  return $self->{number};
+  return shift->{number};
 }
 
 sub get_version {
-  my $self = shift;
-  return $self->{version};
+  return shift->{version};
 }
 
 sub get_milestone {
-  my $self = shift;
-  return $self->{milestone};
+  return shift->{milestone};
 }
 
 sub get_distver {
-  my $self = shift;
-  return $self->{distver};
+  return shift->{distver};
 }
 
 sub get_repomark {
-  my $self = shift;
-  return $self->{repomark};
+  return shift->{repomark};
 }
 
 sub get_fullpackname {
@@ -130,8 +122,7 @@ sub get_fullpackname {
 }
 
 sub get_restofstr {
-  my $self = shift;
-  return $self->{restofstr};
+  return shift->{restofstr};
 }
 
 1;
