@@ -11,6 +11,18 @@ sub new {
 
 sub parse {
   my ($self, $string) = @_;
+  # $string contain:
+  # * package base name string (any character to first period)
+  # * period (not needed)
+  # * package architecture string (x86_64, i686, noarch)
+  # * one space (not needed)
+  # * package full version string (including number but without milestone number)
+  # * dash (not needed)
+  # * package milestone number - release
+  # * optionally: period (not needed)
+  # * optionally: package distribution version string (fc = Fedora Core + number)
+  # * optionally: period (not needed)
+  # * optionally: package repository mark
   my ($name_arch, $fullversion_milestone_other) = split / /, $string;
   my ($__1, $__2, $__3, $__4, $__5, $__6);
   my $milestone_other;
@@ -27,25 +39,6 @@ sub parse {
     $__5 = q{};
     $__6 = q{};
   }
-=comment
-  $string =~ m/
-    ([^\.]+) # Package base name string (any character to first period)
-    \. # Period (not needed)
-    (\w+) # Package architecture string (x86_64, i686, noarch)
-    \s # One space (not needed)
-    ([^\-]+) # Package full version string (including number but without milestone number)
-    - # Dash (not needed)
-    ([^\.]+) # Package milestone number - release
-    (?: # Optionally
-      \. # Period (not needed)
-      (fc\d+) # Package distribution version string (fc = Fedora Core + number)
-    )?
-    (?: # Optionally
-      \. # Period (not needed)
-      (\w+) # Package repository mark
-    )?
-  /x;
-=cut
   my $name = $__1 // return 0;
   my $arch = $__2 // return 0;
   my $version_full = $__3 // return 0;
