@@ -5,6 +5,8 @@ use warnings;
 use diagnostics;
 
 sub new {
+  # This is more readable than:
+  # return bless {}, shift;
   my ($class, $object) = (shift, {});
   return bless $object, $class;
 }
@@ -227,6 +229,8 @@ Get full package name (composed again).
 =head1 NOTES
 
 =head2 Names of Fedora RPM Packages
+
+  <name>.<arch> <num>:<ver>-<milst>.<dist>.<repo>
 
 =head3 Links to Source Fedora Project Wiki Pages
 
