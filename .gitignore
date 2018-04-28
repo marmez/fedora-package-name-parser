@@ -1,3 +1,9 @@
 # Ignore Vim swap temporary files
 *.swp
 
+# Ignore README HTML file generated from README POD file by pod2html
+README.html
+
+# Ignore pod2htmd file
+pod2htmd.tmp
+
