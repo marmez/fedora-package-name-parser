@@ -13,30 +13,23 @@ BEGIN {
 can_ok('FedoraPackage::NameParser', qw(
   new
   parse
-  get_name
-  get_arch
-  get_number
-  get_version
-  get_milestone
-  get_distver
-  get_repomark
-  get_fullpackname
-  get_restofstr
+  get
+  fullname
 ));
 
 my $fpnp = new_ok('FedoraPackage::NameParser');
 
 my %packages = (
   # String containing package name:
-    # 0 - package name,
-    # 1 - package architecture,
-    # 2 - undef (empty string) or number,
-    # 3 - package version,
-    # 4 - package milestone,
-    # 5 - package distribution version,
-    # 6 - undef (empty string) or additional repository mark,
+    # 0 - name - package name,
+    # 1 - arch - package architecture,
+    # 2 - num - undef (empty string) or number,
+    # 3 - ver - package version,
+    # 4 - milst - package milestone,
+    # 5 - dist - package distribution version,
+    # 6 - repo - undef (empty string) or additional repository mark,
     # 7 - package full name (composed)
-    # 8 - undef (empty string) or rest of string (without first package name)
+    # 8 - rest - undef (empty string) or rest of string (without first package name)
   # Alphabetically sorted hash keys - package names:
   'chromium-libs-media-freeworld.x86_64 59.0.3071.104-1.fc25' => [
     q{chromium-libs-media-freeworld},
@@ -176,47 +169,47 @@ foreach my $package (sort keys %packages) {
   subtest("Parse '$package'" => sub {
     cmp_ok($fpnp->parse($package), '==', 1, '->parse() ok');
     is(
-      $fpnp->get_name,
+      $fpnp->get('name'),
       $packages{$package}[0],
       'Package name'
     );
     is(
-      $fpnp->get_arch,
+      $fpnp->get('arch'),
       $packages{$package}[1],
       'Package architecture'
     );
     is(
-      $fpnp->get_number,
+      $fpnp->get('num'),
       $packages{$package}[2],
       'Number'
     );
     is(
-      $fpnp->get_version,
+      $fpnp->get('ver'),
       $packages{$package}[3],
       'Package version'
     );
     is(
-      $fpnp->get_milestone,
+      $fpnp->get('milst'),
       $packages{$package}[4],
       'Package milestone'
     );
     is(
-      $fpnp->get_distver,
+      $fpnp->get('dist'),
       $packages{$package}[5],
       'Package distribution version'
     );
     is(
-      $fpnp->get_repomark,
+      $fpnp->get('repo'),
       $packages{$package}[6],
       'Additional repository mark'
     );
     is(
-      $fpnp->get_fullpackname,
+      $fpnp->fullname,
       $packages{$package}[7],
       'Package full name (composed)'
     );
     is(
-      $fpnp->get_restofstr,
+      $fpnp->get('rest'),
       $packages{$package}[8],
       'Rest of string (without first package name)'
     );

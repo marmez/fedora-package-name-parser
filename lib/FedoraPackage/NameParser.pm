@@ -44,12 +44,12 @@ sub parse {
   }
   $self->{name} = $name;
   $self->{arch} = $arch;
-  $self->{number} = $number;
-  $self->{version} = $version;
-  $self->{milestone} = $milestone;
-  $self->{distver} = $distver;
-  $self->{repomark} = $repomark;
-  $self->{restofstr} = q{};
+  $self->{num} = $number;
+  $self->{ver} = $version;
+  $self->{milst} = $milestone;
+  $self->{dist} = $distver;
+  $self->{repo} = $repomark;
+  $self->{rest} = q{};
   my $package_string = $name . q{.} . $arch . q{ } . $version_full . q{-} . $milestone;
   $package_string .= q{.} . $distver
     if $distver;
@@ -58,54 +58,29 @@ sub parse {
   my $package_string_length = length $package_string;
   my $string_length = length $string;
   if ($string_length > $package_string_length) {
-    $self->{restofstr} = substr $string, $package_string_length;
+    $self->{rest} = substr $string, $package_string_length;
   }
   return 1;
 }
 
-sub get_name {
-  return shift->{name};
+sub get {
+  # This is more readable than:
+  # return shift->{shift};
+  my ($self, $key) = @_;
+  return $self->{$key};
 }
 
-sub get_arch {
-  return shift->{arch};
-}
-
-sub get_number {
-  return shift->{number};
-}
-
-sub get_version {
-  return shift->{version};
-}
-
-sub get_milestone {
-  return shift->{milestone};
-}
-
-sub get_distver {
-  return shift->{distver};
-}
-
-sub get_repomark {
-  return shift->{repomark};
-}
-
-sub get_fullpackname {
+sub fullname {
   my $self = shift;
-  my $fullpackname = $self->{name} . q{.} . $self->{arch} . q{ };
-  $fullpackname .= $self->{number} . q{:}
-    if $self->{number};
-  $fullpackname .= $self->{version} . q{-} . $self->{milestone};
-  $fullpackname .= q{.} . $self->{distver}
-    if $self->{distver};
-  $fullpackname .= q{.} . $self->{repomark}
-    if $self->{repomark};
-  return $fullpackname;
-}
-
-sub get_restofstr {
-  return shift->{restofstr};
+  my $fullname = $self->{name} . q{.} . $self->{arch} . q{ };
+  $fullname .= $self->{num} . q{:}
+    if $self->{num};
+  $fullname .= $self->{ver} . q{-} . $self->{milst};
+  $fullname .= q{.} . $self->{dist}
+    if $self->{dist};
+  $fullname .= q{.} . $self->{repo}
+    if $self->{repo};
+  return $fullname;
 }
 
 1;
