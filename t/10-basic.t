@@ -5,10 +5,7 @@ use diagnostics;
 use Test::More;
 
 use lib 'lib';
-
-BEGIN {
-  use_ok('FedoraPackage::NameParser');
-}
+use FedoraPackage::NameParser;
 
 can_ok('FedoraPackage::NameParser', qw(
   new

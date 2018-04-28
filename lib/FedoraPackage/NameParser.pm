@@ -64,10 +64,12 @@ sub parse {
 }
 
 sub get {
-  # This is more readable than:
-  # return shift->{shift};
-  my ($self, $key) = @_;
-  return $self->{$key};
+  my ($self, @keys) = @_;
+  return map {
+    $self->{$_};
+  } @keys
+    if wantarray;
+  return $self->{shift @keys};
 }
 
 sub fullname {
