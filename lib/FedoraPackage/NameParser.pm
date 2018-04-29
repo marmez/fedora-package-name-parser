@@ -90,7 +90,8 @@ sub fullname {
 
 =head1 NAME
 
-C<FedoraPackage::NameParser> - Parse a Fedora RPM package name to its components.
+C<FedoraPackage::NameParser> - Parse a Fedora RPM package name
+to its components.
 
 =head1 SYNOPSIS
 
@@ -147,14 +148,21 @@ Create a new FedoraPackage::NameParser object.
 
   $fpnp->parse($string);
 
-Parse the first package name in the C<$string> and store the results internally. Package name components can be returned by the C<-E<gt>get($component_name)> method. If the C<$string> contains more than one package name, the first name is removed and rest of the C<$string> is stored internally and can be found by a C<-E<gt>get('rest')> method call. Returns C<1> if the package name was successfully parsed, C<0> otherwise.
+Parse the first package name in the C<$string> and store the results
+internally. Package name components can be returned by
+the C<-E<gt>get($component_name)> method. If the C<$string> contains more
+than one package name, the first name is removed and rest of the C<$string>
+is stored internally and can be found by a C<-E<gt>get('rest')> method
+call. Returns C<1> if the package name was successfully parsed,
+C<0> otherwise.
 
 =head2 C<get>
 
   $fpnp->get($component_name);
   $fpnp->get('rest');
 
-Get single component of the package name or the rest of string (without the first package name already parsed).
+Get single component of the package name or the rest of string
+(without the first package name already parsed).
 
 Available component names (C<$component_name>):
 
@@ -162,7 +170,8 @@ Available component names (C<$component_name>):
 
 =item *
 
-C<name> - Package name. Package base name string (any character to first period).
+C<name> - Package name. Package base name string (any character to first
+period).
 
 =item *
 
