@@ -18,7 +18,13 @@ Then view the file C<README.html> in your favourite web browser:
   $ google-chrome --incognito README.html
 
 Or just look at the POD section at the end of the file
-C<lib/FedoraPackage/NameParser.pm>.
+C<lib/FedoraPackage/NameParser.pm> in your favourite text editor:
+
+  $ vim lib/FedoraPackage/NameParser.pm
+
+Or use the C<perldoc> utility:
+
+  $ perldoc lib/FedoraPackage/NameParser.pm
 
 =cut
 
