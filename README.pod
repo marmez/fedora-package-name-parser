@@ -1,0 +1,24 @@
+=pod
+
+=encoding utf8
+
+=head1 FedoraPackage::NameParser
+
+Parse a Fedora RPM package name to its components. Simple Perl 5 module
+with no dependecies.
+
+=head2 Documentation
+
+In the root directory of the repository, do:
+
+  $ pod2html --infile lib/FedoraPackage/NameParser.pm --outfile README.html
+
+Then view the file C<README.html> in your favourite web browser:
+
+  $ google-chrome --incognito README.html
+
+Or just look at the POD section at the end of the file
+C<lib/FedoraPackage/NameParser.pm>.
+
+=cut
+
