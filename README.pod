@@ -9,6 +9,10 @@ with no dependecies.
 
 =head2 Documentation
 
+=over
+
+=item 1
+
 In the root directory of the repository, do:
 
   $ pod2html --infile lib/FedoraPackage/NameParser.pm --outfile README.html
@@ -17,14 +21,20 @@ Then view the file C<README.html> in your favourite web browser:
 
   $ google-chrome --incognito README.html
 
+=item 2
+
 Or just look at the POD section at the end of the file
 C<lib/FedoraPackage/NameParser.pm> in your favourite text editor:
 
   $ vim lib/FedoraPackage/NameParser.pm
 
+=item 3
+
 Or use the C<perldoc> utility:
 
   $ perldoc lib/FedoraPackage/NameParser.pm
+
+=back
 
 =cut
 
