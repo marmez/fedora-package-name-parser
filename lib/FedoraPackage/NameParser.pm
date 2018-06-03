@@ -64,10 +64,11 @@ sub parse {
 
 sub get {
   my ($self, @keys) = @_;
-  return map {
-    $self->{$_};
-  } @keys
-    if wantarray;
+  if (wantarray) {
+    return map {
+      $self->{$_};
+    } @keys;
+  }
   return $self->{shift @keys};
 }
 
