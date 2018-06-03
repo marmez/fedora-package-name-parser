@@ -55,8 +55,9 @@ sub parse {
   $self->{repo} = $repo // q{};
   $self->{rest} = q{};
   my $fullname_length = length $self->fullname;
-  $self->{rest} = substr $string, $fullname_length
-    if length $string > $fullname_length;
+  if (length $string > $fullname_length) {
+    $self->{rest} = substr $string, $fullname_length;
+  }
   return 1;
 }
 
@@ -72,13 +73,16 @@ sub get {
 sub fullname {
   my $self = shift;
   my $fullname = $self->{name} . q{.} . $self->{arch} . q{ };
-  $fullname .= $self->{num} . q{:}
-    if $self->{num};
+  if ($self->{num}) {
+    $fullname .= $self->{num} . q{:};
+  }
   $fullname .= $self->{ver} . q{-} . $self->{milst};
-  $fullname .= q{.} . $self->{dist}
-    if $self->{dist};
-  $fullname .= q{.} . $self->{repo}
-    if $self->{repo};
+  if ($self->{dist}) {
+    $fullname .= q{.} . $self->{dist};
+  }
+  if ($self->{repo}) {
+    $fullname .= q{.} . $self->{repo};
+  }
   return $fullname;
 }
 
