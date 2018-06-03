@@ -8,12 +8,14 @@ use lib 'lib';
 
 my @modules = (
   # Just to be sure
+  # Yep, this is too sophisticated for one module name
   'lib/*.pm',
   # FedoraPackage::NameParser
   'lib/*/*.pm',
 );
 
 foreach my $module (map {
+  # Get rid of superfluous parts of the path
   s|^lib/||;
   s|/|::|g;
   s|\.pm$||;
