@@ -31,8 +31,9 @@ sub parse {
   );
   my ($first_part, $second_part) = split / /, $string;
   my ($third_part, $fourth_part) = split /-/, $second_part;
-  ($name, $arch) = ($1, $2)
-    if $first_part =~ /^(.+)\.(x86_64|i686|noarch)$/;
+  if ($first_part =~ /^(.+)\.(x86_64|i686|noarch)$/) {
+    ($name, $arch) = ($1, $2);
+  }
   if ($third_part =~ /:/) {
     ($num, $ver) = split /:/, $third_part;
   }
