@@ -5,7 +5,7 @@
 =head1 FedoraPackage::NameParser
 
 Parse a Fedora RPM package name to its components. Simple Perl 5 module
-with no dependecies.
+with no dependencies.
 
 =head2 Documentation
 
